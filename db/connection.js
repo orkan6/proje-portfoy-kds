@@ -1,0 +1,18 @@
+const mysql = require('mysql2/promise');
+
+const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'kds_proje',
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0
+});
+
+const query = (...args) => pool.query(...args);
+
+module.exports = {
+    pool,
+    query
+}; 
